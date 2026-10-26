@@ -1,0 +1,38 @@
+# Build outputs and IDE-local state
+**/target/
+**/build/
+**/.idea/
+**/.vscode/
+*.iml
+*.iws
+*.ipr
+*.class
+*.jar
+*.war
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# Local secrets and private exports
+.env
+.env.*
+!.env.example
+**/application-local.properties
+**/application-local.yml
+**/application-local.yaml
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.zip
+*.sql.gz
+*.dump
+/shop_db*.sql
+/database/backups/
+/private/
+
+# Maven Wrapper source remains tracked
+!**/.mvn/wrapper/maven-wrapper.properties

@@ -1,0 +1,7 @@
+# Copy to application-local.properties in this directory (never commit the copy).
+# Prefer scripts/Setup-Local.ps1 to generate a random key for your machine.
+spring.datasource.username=root
+spring.datasource.password=
+# REQUIRED: replace with your own random key of at least 32 bytes.
+# Empty value is intentionally unusable for signing login tokens.
+jwt.secret=
