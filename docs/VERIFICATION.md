@@ -28,7 +28,7 @@ Thời điểm build thành công được Maven ghi: 26/10/2026, 18:19, múi gi
 - Chưa kiểm thử đồng thời, hiệu năng p95, responsive 390/1366 px hoặc kiểm thử bảo mật động.
 - Chưa thực thi các script PowerShell trên Windows; đã rà soát mã và đường dẫn của chúng. Build thực hiện trực tiếp bằng Maven Wrapper trên Linux.
 - Chưa thực hiện các thay đổi nghiệp vụ được liệt kê trong REVIEW.md.
-- Chưa tạo commit, ghi công tác giả, push, tạo Issue/PR hay thay đổi quyền GitHub. Gói nguồn không chứa `.git`.
+- Tại thời điểm kiểm tra trước khi đưa lên GitHub, chưa tạo commit hoặc push. Trạng thái đưa nguồn lên được ghi ở mục bàn giao bên dưới. Chưa tạo Issue/PR, thay đổi quyền kho hoặc gán công việc cho tài khoản thành viên. Gói ZIP không chứa `.git`.
 - Chưa chuyển task, ca kiểm thử hoặc Sprint trên Notion sang Done/Đạt.
 
 ## Kiểm tra tiếp trên máy nhóm
@@ -37,3 +37,13 @@ Thời điểm build thành công được Maven ghi: 26/10/2026, 18:19, múi gi
 2. Chạy `mvnw.cmd test`, backend và frontend; lưu kết quả có build/commit.
 3. Chạy lại các ca RTM theo từng User Story, ưu tiên các chênh lệch RV-01 đến RV-10.
 4. Tạo Issue/PR cho từng phần sửa; chỉ ghi Done khi đủ review, tiêu chí và minh chứng thật.
+
+## Bàn giao mã nguồn lên GitHub
+
+Repository: [HaoMilke/ismart-nhom4](https://github.com/HaoMilke/ismart-nhom4), nhánh `main`, riêng tư.
+
+Commit nhập baseline: [6860b9d](https://github.com/HaoMilke/ismart-nhom4/commit/6860b9da9f4374f24a833897de2c3bbbcf12ca1a).
+
+Đã đối chiếu đường dẫn, mode và Git blob SHA của đủ **129 tệp** với gói được rà soát: không sai khác, không có tệp thừa. Bản cập nhật hướng dẫn bàn giao sau đó chỉ thay đổi README và tài liệu xác minh này.
+
+Không kèm tệp build, cấu hình bí mật hoặc SQL dữ liệu người dùng trong lần đưa nguồn lên. Task và test trên Notion chưa được tự chuyển Done/Đạt. Các giới hạn kiểm thử ở trên vẫn còn hiệu lực.

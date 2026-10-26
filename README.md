@@ -113,24 +113,23 @@ Trong `namtronlogin/`:
 
 Lệnh đầu bỏ chạy test, không phải kết quả kiểm thử chức năng. Lệnh thứ hai chạy test hiện có và cần cấu hình DB/JWT phù hợp; mã tiếp nhận mới có một test nạp Spring context. Xem chính xác những kiểm tra đã/chưa thực hiện tại `docs/VERIFICATION.md`.
 
-## 8. Khởi tạo Git và đẩy lần đầu
+## 8. Lấy mã nguồn và làm việc với Git
 
-Gói ZIP này không mang theo lịch sử `.git` hoặc giả lập commit của 5 thành viên. Khi đứng trong thư mục gốc:
+Repository của nhóm: [HaoMilke/ismart-nhom4](https://github.com/HaoMilke/ismart-nhom4). Kho đang để riêng tư; thành viên cần được chủ kho cấp quyền trước khi clone.
+
+Mở PowerShell tại thư mục muốn lưu dự án:
 
 ```powershell
-git init -b main
-git add .
-git diff --cached --name-only
-git diff --cached --check
-git commit -m "chore: import reviewed project baseline"
-$repoUrl = Read-Host "URL repository GitHub moi va rong cua nhom"
-git remote add origin $repoUrl
-git push -u origin main
+git clone https://github.com/HaoMilke/ismart-nhom4.git
+cd ismart-nhom4
+code .
 ```
 
-Nếu Git yêu cầu tên/email tác giả, thiết lập bằng danh tính GitHub của chính người commit. Chọn một repository mới, trống để tránh ghi đè công việc có sẵn; không dùng force push. Không đổi ngày commit về lịch Sprint giả định.
+Tiếp tục chuẩn bị database và cấu hình riêng theo mục 4–6. Dùng [CONTRIBUTING.md](CONTRIBUTING.md) cho công việc mới: cập nhật main, tạo nhánh theo mã task, commit bằng tài khoản của mình, mở PR và nhận review.
 
-Trước commit, danh sách không được có `target/`, `.idea/`, `application-local.properties`, SQL gốc `shop_db (1).sql`, khóa, log hoặc dữ liệu khách hàng.
+Bản đầu tiên được đưa lên gồm 129 tệp đã rà soát. Lịch sử nhập nguồn không phải lịch sử triển khai các User Story của cả nhóm; không đổi ngày commit về lịch Sprint giả định.
+
+Trước mỗi commit, kiểm tra `git diff --cached --name-only` và `git diff --cached --check`. Danh sách không được có `target/`, `.idea/`, `application-local.properties`, SQL gốc, khóa, log hoặc dữ liệu khách hàng.
 
 ## 9. Liên kết Notion
 
