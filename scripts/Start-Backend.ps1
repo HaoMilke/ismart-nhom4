@@ -25,6 +25,16 @@ if (-not (Test-Path (Join-Path $backend 'application-local.properties')) -and -n
     throw 'Run scripts/Setup-Local.ps1 first, or set JWT_SECRET and the database environment variables.'
 }
 
+$configPath = Join-Path $backend 'application-local.properties'
+if (Test-Path $configPath) {
+    if (Select-String -LiteralPath $configPath -Pattern '^\s*spring\.datasource\.(url|driver-class-name)\s*=.*(?:jdbc:mysql:|com\.mysql\.)' -Quiet) {
+        throw 'Local configuration still points to MySQL. Run scripts/Setup-Local.ps1 -Reconfigure for SQL Server.'
+    }
+}
+if ($env:DB_URL -and $env:DB_URL -notlike 'jdbc:sqlserver:*') {
+    throw 'DB_URL must use jdbc:sqlserver: for this version.'
+}
+
 Push-Location $backend
 try {
     & .\mvnw.cmd spring-boot:run

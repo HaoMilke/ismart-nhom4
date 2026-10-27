@@ -1,4 +1,29 @@
-# Kết quả kiểm tra bản chuẩn bị Git
+# Kết quả kiểm tra kỹ thuật
+
+## Chuyển sang SQL Server — 27/10/2026
+
+Thực hiện theo yêu cầu của Hào. Cấu hình và script hiện tại dùng SQL Server; phần baseline bên dưới được giữ để truy vết bản tiếp nhận, không mô tả trạng thái kiểm thử hiện tại. Hướng dẫn Windows/SSMS: [SQLSERVER.md](SQLSERVER.md).
+
+Môi trường xác minh: Ubuntu 24.04 x64, Amazon Corretto 26.0.2.11.1, Maven Wrapper 3.9.16, Microsoft JDBC 13.6.0.jre11, SQL Server Developer 2025 **17.0.5005.3**, database compatibility level **150**. Engine và database thử nghiệm tách khỏi dữ liệu của nhóm; chỉ dùng dữ liệu giả.
+
+| Kiểm tra | Kết quả thực tế |
+| --- | --- |
+| Biên dịch/đóng gói | `./mvnw -B -U -DskipTests package`: BUILD SUCCESS |
+| Schema T-SQL | Thực thi tạo `shop_db`, đủ 9 bảng, 6 khóa ngoại; IDENTITY và kiểu NVARCHAR/datetime2/decimal/bit |
+| Dữ liệu mẫu | 12 sản phẩm, 1 banner, 1 tin tức; đọc đúng tiếng Việt |
+| Chạy lặp | Schema từ chối DB đã có bảng (51001); seed từ chối dữ liệu demo đã tồn tại (51003); 12 sản phẩm giữ nguyên |
+| Tài khoản database | Backend chạy bằng SQL login `ismart_app`, chỉ db_datareader/db_datawriter và VIEW DEFINITION; không sysadmin/db_owner |
+| Hibernate | Khởi động với `ddl-auto=validate`, xác minh được mapping của 9 entity; không tự sửa bảng |
+| API đọc | Danh sách 12 sản phẩm, tìm “Điện thoại” trả 2 kết quả; banner và tin tức đọc được |
+| API ghi | Đăng ký tài khoản giả lập có họ tên tiếng Việt → đăng nhập/JWT → thêm 1 sản phẩm vào giỏ → tạo đơn → lịch sử trả đúng đơn vừa tạo; địa chỉ tiếng Việt được giữ |
+| Kiểm tra DB sau API | 1 user và 1 order trong database thử nghiệm; ID được sinh tự động |
+| Test có sẵn | `./mvnw -B test`: contextLoads, 1 test, 0 failures, 0 errors, 0 skipped; kết nối SQL Server thật |
+| PowerShell | Parse thành công 4 script bằng PowerShell 7.6.9; thử Setup-Local trong thư mục tạm: mặc định host/port/login, nhập mật khẩu ẩn, JWT ngẫu nhiên 32 byte, reconfigure và sao lưu cấu hình cũ |
+| Git | Chuẩn hóa CRLF thành LF cho 78 tệp nguồn theo .gitattributes trong commit riêng; không đổi nội dung Java/JS ở commit chuẩn hóa |
+
+**Giới hạn:** đây là kiểm tra tích hợp khi chuyển database, chưa phải nghiệm thu đầy đủ RTM. Chưa xác minh trực tiếp SQL Server 2019/Express, SSMS, PowerShell 5.1 hoặc máy Windows của nhóm; compatibility level 150 trên SQL Server 2025 không thay thế kiểm thử SQL Server 2019. Chưa kiểm thử UI, nhiều người dùng đồng thời, hiệu năng, các nhánh lỗi nghiệp vụ hay bảo mật động. Các vấn đề trong REVIEW.md chưa được sửa bởi lần chuyển database này; không tự chuyển task/test sang Done/Đạt.
+
+## Hồ sơ baseline trước chuyển đổi
 
 Ngày: 26/10/2026. Đây là bằng chứng kiểm tra kỹ thuật của bản baseline, không thay cho báo cáo nghiệm thu chức năng.
 

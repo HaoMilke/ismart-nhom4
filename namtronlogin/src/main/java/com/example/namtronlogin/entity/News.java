@@ -17,7 +17,7 @@ public class News {
     @Column(length = 500)
     private String summary; // Mô tả ngắn hiện ở trang danh sách
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "nvarchar(max)", nullable = false)
     private String content; // Nội dung đầy đủ
 
     @Column(name = "image_url", length = 500)

@@ -15,7 +15,7 @@ public class Product {
     @Column(nullable = false)
     private String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "nvarchar(max)")
     private String description;
 
     @Column(nullable = false, precision = 12, scale = 2)

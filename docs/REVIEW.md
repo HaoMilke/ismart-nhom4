@@ -1,5 +1,7 @@
 # Rà soát mã nguồn trước khi đưa lên Git
 
+> **Cấu hình hiện tại:** dự án đã chuyển sang SQL Server. Các nhận xét MySQL/MariaDB bên dưới mô tả bản nguồn ban đầu; xem [SQLSERVER.md](SQLSERVER.md) và phần xác minh chuyển đổi trong VERIFICATION.md.
+
 Ngày rà soát: 26/10/2026. Đầu vào: gói `MyShop.zip` và SQL `shop_db (1).sql` do nhóm cung cấp. Phạm vi: chọn tệp, cấu hình, dữ liệu, phụ thuộc, luồng nghiệp vụ chính và đối chiếu cơ sở đặc tả ISmart 3.0.
 
 ## 1. Kết luận
